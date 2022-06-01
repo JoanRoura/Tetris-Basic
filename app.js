@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.querySelector('#start-button')
   const reset = document.querySelector('#reiniciar')
   const next = document.querySelector('#next')
+  const historial = document.querySelector('#historial')
+  const mostrarHistorial = document.querySelector('#mostrarHistorial')
   const width = 10
   let nextRandom = 0
   let timerId
@@ -235,6 +237,22 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
   })
 
+  const html = document.querySelector('#html');
+
+  window.onunload = () => sessionStorage.clear();
+
+  html.addEventListener('keydown', function (e) {
+
+    if(sessionStorage.getItem("counter") == null)
+        sessionStorage.setItem("counter", "0");
+
+    let contador = Number(sessionStorage.getItem("counter"))
+    sessionStorage.setItem("counter",contador + 1);
+
+    historial.addEventListener('click', () => {
+      mostrarHistorial.innerHTML += "<span> Tecla " + contador +": " + e.key + '<br/>';
+    })
+  })  
   //add score
   function addScore() {
     for (let i = 0; i < 199; i +=width) {
