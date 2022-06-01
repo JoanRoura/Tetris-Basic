@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let squares = Array.from(document.querySelectorAll('.grid div'))
   const scoreDisplay = document.querySelector('#score')
   const startBtn = document.querySelector('#start-button')
+  const reset = document.querySelector('#reiniciar')
   const width = 10
   let nextRandom = 0
   let timerId
@@ -221,6 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  reset.addEventListener('click', () => {
+    scoreDisplay.innerHTML = 0
+    location.reload();
+  })
+
   //add score
   function addScore() {
     for (let i = 0; i < 199; i +=width) {
@@ -249,5 +255,5 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(timerId)
     }
   }
-  
+
 })
