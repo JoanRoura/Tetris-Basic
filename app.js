@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const scoreDisplay = document.querySelector('#score')
   const startBtn = document.querySelector('#start-button')
   const reset = document.querySelector('#reiniciar')
+  const next = document.querySelector('#next')
   const width = 10
   let nextRandom = 0
   let timerId
@@ -225,6 +226,13 @@ document.addEventListener('DOMContentLoaded', () => {
   reset.addEventListener('click', () => {
     scoreDisplay.innerHTML = 0
     location.reload();
+  })
+
+  next.addEventListener('dblclick', () => {
+    draw()
+    timerId = setInterval(moveDown, 500)
+      nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+      displayShape()
   })
 
   //add score
